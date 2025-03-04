@@ -18,3 +18,7 @@
 [init]
 	defaultBranch = main
 	templatedir = ~/.git-templates
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
