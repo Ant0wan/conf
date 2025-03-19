@@ -107,6 +107,12 @@
 					"foreground": "#FED142",
 					"type": "python",
 					"style": "plain"
+				},
+				{
+				  "type": "session",
+				  "style": "diamond",
+				  "foreground": "#FFD700",
+				   "template": "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }}   {{ .Env.EXTERNAL_IP }}{{ end }}"
 				}
 			]
 		},
