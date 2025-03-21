@@ -41,8 +41,8 @@ function gcp_bastion_stop() { # 1arg: <vm-name>
 
 function gcp_bastion_ssh() { # 1arg: <vm-name>
 	IP="$(gcloud compute instances describe $1 \
-	  --project=$PROJECT \
-	  --zone=$ZONE \
+	  --project=$CLOUDSDK_CORE_PROJECT \
+	  --zone=$CLOUDSDK_COMPUTE_ZONE \
 	  --format='get(networkInterfaces[0].accessConfigs[0].natIP)')"
 
 	echo ${USER}@${IP}
