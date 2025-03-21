@@ -1,0 +1,64 @@
+# .bashrc
+
+gcloud config list
+
+export CLOUDSDK_CORE_PROJECT="$(gcloud config get project)"
+export CLOUDSDK_COMPUTE_ZONE="$(gcloud config get compute/zone)"
+
+function gcp_bastion_start() { # 1arg: <vm-name>
+	STATUS=$(gcloud compute instances describe $1 \
+	  --project=$CLOUDSDK_CORE_PROJECT \
+	  --zone=$CLOUDSDK_COMPUTE_ZONE \
+	  --format='get(status)')
+
+	if [ "$STATUS" != "RUNNING" ]; then
+	  echo "Instance is not running. Starting it..."
+	  gcloud compute instances start $1 \
+	    --project=$CLOUDSDK_CORE_PROJECT \
+	    --zone=$CLOUDSDK_COMPUTE_ZONE
+	else
+	  echo "Instance is already running."
+	fi
+}
+
+
+function gcp_bastion_stop() { # 1arg: <vm-name>
+	STATUS=$(gcloud compute instances describe $1 \
+		--project=$CLOUDSDK_CORE_PROJECT \
+		--zone=$CLOUDSDK_COMPUTE_ZONE \
+		--format='get(status)');
+
+	if [ "$STATUS" == "RUNNING" ]; then
+	  echo "Instance is running. Stopping it..."
+	  gcloud compute instances stop $1 \
+	    --project=$CLOUDSDK_CORE_PROJECT \
+	    --zone=$CLOUDSDK_COMPUTE_ZONE
+	else
+	  echo "Instance is not running."
+	fi
+}
+
+
+function gcp_bastion_ssh() { # 1arg: <vm-name>
+	IP="$(gcloud compute instances describe $1 \
+	  --project=$PROJECT \
+	  --zone=$ZONE \
+	  --format='get(networkInterfaces[0].accessConfigs[0].natIP)')"
+
+	echo ${USER}@${IP}
+	ssh ${USER}@${IP}
+}
+
+function gcp_get_available_clusters() {
+	for PROJECT in $(gcloud projects list --format="value(projectId)"); do
+		gcloud container clusters list \
+			 --project="$PROJECT" \
+			 --format="value(name,location)" | \
+			while read -r CLUSTER_NAME LOCATION; do
+				gcloud container clusters get-credentials "$CLUSTER_NAME" \
+					--project="$PROJECT" \
+					--region="$LOCATION"
+			done
+	done
+}
+
