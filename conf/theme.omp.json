@@ -112,7 +112,7 @@
 				  "type": "session",
 				  "style": "diamond",
 				  "foreground": "#FFD700",
-				   "template": "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }}   {{ .Env.EXTERNAL_IP }}{{ end }}"
+				   "template": "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }}{{ end }}  {{ if .Env.EXTERNAL_IP }} {{ .Env.EXTERNAL_IP }}{{ end }}"
 				}
 			]
 		},
