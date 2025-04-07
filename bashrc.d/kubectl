@@ -4,3 +4,12 @@ source <(kubectl completion bash)
 alias k='kubectl'
 complete -F __start_kubectl k
 
+function kubectl_cluster_rs_clean() {
+	kubectl get rs --all-namespaces --no-headers | awk '$4==0 {print $1, $2}' | while read ns name; do
+	  kubectl delete rs "$name" -n "$ns"
+	done
+}
+
+function kubectl_rs_clean() {
+	kubectl get rs --no-headers | awk '$2==0 {print $1}' | xargs -r kubectl delete rs
+}
