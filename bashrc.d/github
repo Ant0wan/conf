@@ -1,0 +1,4 @@
+# .bashrc
+
+alias pr_list="gh search prs --author=@me --state=open --json url --jq '.[].url'"
+

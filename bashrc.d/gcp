@@ -1,21 +1,15 @@
 # .bashrc
 
-#gcloud config list
-
-#export CLOUDSDK_CORE_PROJECT="$(gcloud config get project)"
-#export CLOUDSDK_COMPUTE_ZONE="$(gcloud config get compute/zone)"
+function gcp_bastion_status() { #1arg: <vm-name>
+	gcloud compute instances describe $1 --format='get(status)')
+}
 
 function gcp_bastion_start() { # 1arg: <vm-name>
-	STATUS=$(gcloud compute instances describe $1 \
-#	  --project=$CLOUDSDK_CORE_PROJECT \
-#	  --zone=$CLOUDSDK_COMPUTE_ZONE \
-	  --format='get(status)')
+	STATUS=$(gcp_bastion_status $1)
 
 	if [ "$STATUS" != "RUNNING" ]; then
 	  echo "Instance is not running. Starting it..."
 	  gcloud compute instances start $1 \
-#	    --project=$CLOUDSDK_CORE_PROJECT \
-#	    --zone=$CLOUDSDK_COMPUTE_ZONE
 	else
 	  echo "Instance is already running."
 	fi
@@ -23,16 +17,11 @@ function gcp_bastion_start() { # 1arg: <vm-name>
 
 
 function gcp_bastion_stop() { # 1arg: <vm-name>
-	STATUS=$(gcloud compute instances describe $1 \
-#		--project=$CLOUDSDK_CORE_PROJECT \
-#		--zone=$CLOUDSDK_COMPUTE_ZONE \
-		--format='get(status)');
+	STATUS=$(gcp_bastion_status $1)
 
 	if [ "$STATUS" == "RUNNING" ]; then
 	  echo "Instance is running. Stopping it..."
 	  gcloud compute instances stop $1 \
-#	    --project=$CLOUDSDK_CORE_PROJECT \
-#	    --zone=$CLOUDSDK_COMPUTE_ZONE
 	else
 	  echo "Instance is not running."
 	fi
@@ -41,8 +30,6 @@ function gcp_bastion_stop() { # 1arg: <vm-name>
 
 function gcp_bastion_ssh() { # 1arg: <vm-name>
 	IP="$(gcloud compute instances describe $1 \
-	  #--project=$CLOUDSDK_CORE_PROJECT \
-	  #--zone=$CLOUDSDK_COMPUTE_ZONE \
 	  --format='get(networkInterfaces[0].accessConfigs[0].natIP)')"
 
 	echo ${USER}@${IP}
