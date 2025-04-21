@@ -2,7 +2,7 @@
 set -o errexit
 
 if test $# -eq 0; then
-	selection="$(find scripts/ -type f -printf "%f\n" | awk -F '.' '{ print $1 }' | sort | sk --multi --bind 'right:select-all,left:deselect-all,space:toggle+up' --preview="batcat --color=always scripts/{}.sh --color=always")"
+	selection="$(find scripts/ -type f -printf "%f\n" | awk -F '.' '{ print $1 }' | sort | sk --multi --bind 'right:select-all,left:deselect-all,space:toggle+up' --preview="batcat --color=always scripts/{}.sh --color=always" --preview-window 'right:70%')"
 else
 	selection="$(echo "$@" | tr ' ' '\n' | sort -u | tr '\n' ' ' | xargs echo | sort)"
 	echo "$selection"
