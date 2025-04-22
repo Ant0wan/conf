@@ -1,10 +1,6 @@
 #### Install
 ```shell
-wget -O - craftedengineers.cloud/init.sh | bash
-```
-
-```shell
-sh -c "$(wget https://craftedengineers.cloud/init.sh -O -)"
+wget -O - https://raw.github.com/Ant0wan/conf/master/init.sh | bash
 ```
 
 ```shell
