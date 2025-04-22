@@ -1,14 +1,14 @@
 #### Install
 ```shell
-wget -O - https://raw.github.com/Ant0wan/conf/master/init.sh | bash
+wget -O - https://raw.github.com/Ant0wan/conf/master/remote.sh | bash
 ```
 
 ```shell
-sh -c "$(wget https://raw.github.com/Ant0wan/conf/master/init.sh -O -)"
+sh -c "$(wget https://raw.github.com/Ant0wan/conf/master/remote.sh -O -)"
 ```
 
 ```shell
-sh -c "$(curl -fsSL https://raw.github.com/Ant0wan/conf/master/init.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/Ant0wan/conf/master/remote.sh)"
 ```
 
 
