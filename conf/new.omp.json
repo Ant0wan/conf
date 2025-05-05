@@ -51,30 +51,6 @@
 			"alignment": "right",
 			"segments": [
 				{
-					"type": "rust",
-					"style": "powerline",
-					"powerline_symbol": "",
-					"foreground": "#193549",
-					"background": "#99908a",
-					"template": "  {{ .Full }} "
-				},
-				{
-					"type": "go",
-					"style": "powerline",
-					"powerline_symbol": "",
-					"foreground": "#ffffff",
-					"background": "#7FD5EA",
-					"template": "  {{ .Full }} "
-				},
-				{
-					"type": "haskell",
-					"style": "powerline",
-					"powerline_symbol": "",
-					"foreground": "#906cff",
-					"background": "#100e23",
-					"template": "  {{ .Full }}"
-				},
-				{
 					"properties": {
 						"cache_duration": "none",
 						"display_mode": "context",
