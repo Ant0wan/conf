@@ -23,7 +23,7 @@
 						"fetch_status": true,
 						"fetch_upstream_icon": true
 					},
-					"template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} {{ end }}{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} {{ .StashCount }}{{ end }} ",
+					"template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }}{{ end }}{{ if .Working.Changed }} {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} {{ end }}{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} {{ .StashCount }}{{ end }} ",
 					"foreground": "#00D8FF",
 					"type": "git",
 					"style": "diamond",
@@ -55,42 +55,6 @@
 					"style": "plain",
 					"foreground": "#00F0FF",
 					"template": "{{if .Namespace}}{{.Namespace}}{{end}} 󱃾 {{.Context}} "
-				},
-				{
-					"properties": {
-						"cache_duration": "none",
-						"display_mode": "files",
-						"fetch_package_manager": true,
-						"fetch_version": true,
-						"npm_icon": "<#FF2E63>󰛷 npm</> ",
-						"yarn_icon": "<#00FF9D>󰛷 yarn</> "
-					},
-					"template": "{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }} {{ .Full }}",
-					"foreground": "#00FF9D",
-					"type": "node",
-					"style": "plain"
-				},
-				{
-					"properties": {
-						"cache_duration": "none",
-						"display_mode": "files",
-						"fetch_version": true
-					},
-					"template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
-					"foreground": "#9D72FF",
-					"type": "crystal",
-					"style": "plain"
-				},
-				{
-					"properties": {
-						"cache_duration": "none",
-						"display_mode": "files",
-						"fetch_version": true
-					},
-					"template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
-					"foreground": "#FF2E63",
-					"type": "ruby",
-					"style": "plain"
 				},
 				{
 					"properties": {
