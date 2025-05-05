@@ -51,10 +51,28 @@
 			"alignment": "right",
 			"segments": [
 				{
-					"type": "kubectl",
-					"style": "plain",
-					"foreground": "#00F0FF",
-					"template": "{{if .Namespace}}{{.Namespace}}{{end}} 󱃾 {{.Context}} "
+					"type": "rust",
+					"style": "powerline",
+					"powerline_symbol": "",
+					"foreground": "#193549",
+					"background": "#99908a",
+					"template": "  {{ .Full }} "
+				},
+				{
+					"type": "go",
+					"style": "powerline",
+					"powerline_symbol": "",
+					"foreground": "#ffffff",
+					"background": "#7FD5EA",
+					"template": "  {{ .Full }} "
+				},
+				{
+					"type": "haskell",
+					"style": "powerline",
+					"powerline_symbol": "",
+					"foreground": "#906cff",
+					"background": "#100e23",
+					"template": "  {{ .Full }}"
 				},
 				{
 					"properties": {
@@ -68,10 +86,16 @@
 					"style": "plain"
 				},
 				{
-				  "type": "session",
-				  "style": "plain",
-				  "foreground": "#00D8FF",
-				  "template": "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }}{{ end }}  {{ if .Env.EXTERNAL_IP }}󰖧 {{ .Env.EXTERNAL_IP }}{{ end }}"
+					"type": "kubectl",
+					"style": "plain",
+					"foreground": "#00F0FF",
+					"template": "{{if .Namespace}}{{.Namespace}}{{end}} 󱃾 {{.Context}} "
+				},
+				{
+					"type": "session",
+					"style": "plain",
+					"foreground": "#00D8FF",
+					"template": "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }}{{ end }}  {{ if .Env.EXTERNAL_IP }}󰖧 {{ .Env.EXTERNAL_IP }}{{ end }}"
 				}
 			]
 		},
