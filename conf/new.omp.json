@@ -64,14 +64,14 @@
 				{
 					"type": "kubectl",
 					"style": "plain",
-					"foreground": "#00F0FF",
+					"foreground": "#00D8FF",
 					"template": "{{if .Namespace}}{{.Namespace}}{{end}} 󱃾 {{.Context}} "
 				},
 				{
 					"type": "session",
 					"style": "plain",
-					"foreground": "#00D8FF",
-					"template": "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }}{{ end }}  {{ if .Env.EXTERNAL_IP }}󰖧 {{ .Env.EXTERNAL_IP }}{{ end }}"
+					"foreground": "#b80fff",
+					"template": "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }}{{ end }} {{ if .Env.EXTERNAL_IP }} {{ .Env.EXTERNAL_IP }}{{ end }}"
 				}
 			]
 		},
