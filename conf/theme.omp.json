@@ -10,9 +10,8 @@
 						"cache_duration": "none",
 						"style": "full"
 					},
-					"template": " 󰉋 {{ .Path }} ",
+					"template": "{{ .Path }}",
 					"foreground": "#00FF9D",
-					"background": "#0A0E24",
 					"type": "path",
 					"style": "diamond"
 				},
@@ -24,9 +23,8 @@
 						"fetch_status": true,
 						"fetch_upstream_icon": true
 					},
-					"template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} 󰈈 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} {{ end }}{{ if .Staging.Changed }} 󰆴 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} 󰛨 {{ .StashCount }}{{ end }} ",
+					"template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }}{{ end }}{{ if .Working.Changed }} {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} {{ end }}{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} {{ .StashCount }}{{ end }} ",
 					"foreground": "#00D8FF",
-					"background": "#0A0E24",
 					"type": "git",
 					"style": "diamond",
 					"foreground_templates": [
@@ -53,52 +51,6 @@
 			"alignment": "right",
 			"segments": [
 				{
-					"type": "kubectl",
-					"style": "plain",
-					"foreground": "#00F0FF",
-					"background": "#0A0E24",
-					"template": "{{if .Namespace}}{{.Namespace}}{{end}} 󱃾 {{.Context}} "
-				},
-				{
-					"properties": {
-						"cache_duration": "none",
-						"display_mode": "files",
-						"fetch_package_manager": true,
-						"fetch_version": true,
-						"npm_icon": "<#FF2E63>󰛷 npm</> ",
-						"yarn_icon": "<#00FF9D>󰛷 yarn</> "
-					},
-					"template": "{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }} {{ .Full }}",
-					"foreground": "#00FF9D",
-					"background": "#0A0E24",
-					"type": "node",
-					"style": "plain"
-				},
-				{
-					"properties": {
-						"cache_duration": "none",
-						"display_mode": "files",
-						"fetch_version": true
-					},
-					"template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
-					"foreground": "#9D72FF",
-					"background": "#0A0E24",
-					"type": "crystal",
-					"style": "plain"
-				},
-				{
-					"properties": {
-						"cache_duration": "none",
-						"display_mode": "files",
-						"fetch_version": true
-					},
-					"template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
-					"foreground": "#FF2E63",
-					"background": "#0A0E24",
-					"type": "ruby",
-					"style": "plain"
-				},
-				{
 					"properties": {
 						"cache_duration": "none",
 						"display_mode": "context",
@@ -106,16 +58,20 @@
 					},
 					"template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
 					"foreground": "#FFEE00",
-					"background": "#0A0E24",
 					"type": "python",
 					"style": "plain"
 				},
 				{
-				  "type": "session",
-				  "style": "plain",
-				  "foreground": "#00D8FF",
-				  "background": "#0A0E24",
-				  "template": "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }}{{ end }}  {{ if .Env.EXTERNAL_IP }}󰖧 {{ .Env.EXTERNAL_IP }}{{ end }}"
+					"type": "kubectl",
+					"style": "plain",
+					"foreground": "#00D8FF",
+					"template": "{{if .Namespace}}{{.Namespace}}{{end}} 󱃾 {{.Context}} "
+				},
+				{
+					"type": "session",
+					"style": "plain",
+					"foreground": "#b80fff",
+					"template": "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }}{{ end }} {{ if .Env.EXTERNAL_IP }} {{ .Env.EXTERNAL_IP }}{{ end }}"
 				}
 			]
 		},
