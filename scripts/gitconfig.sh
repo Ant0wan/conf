@@ -14,10 +14,22 @@ if ! command -v bw >/dev/null 2>&1; then
 	. "$script_dir/bitwarden.install.sh"
 fi
 githubsource="https://raw.githubusercontent.com/Ant0wan/conf/main/"
-wget "${githubsource}gitconfig" -O "$HOME"/.gitconfig
+if [ "$(basename $(pwd))" = "scripts" ]; then
+	cp "$(dirname $(pwd))"/gitconfig "$HOME"/.gitconfig
+elif test -e "$0"; then
+	cp gitconfig "$HOME"/.gitconfig
+else
+	wget "${githubsource}gitconfig" -O "$HOME"/.gitconfig
+fi
 mkdir -p ~/.git-templates/hooks
 # Could copy all hooks from there
-wget "${githubsource}gitignore" -O "$HOME"/.gitignore
+if [ "$(basename $(pwd))" = "scripts" ]; then
+	cp "$(dirname $(pwd))"/gitignore "$HOME"/.gitignore
+elif test -e "$0"; then
+	cp gitignore "$HOME"/.gitignore
+else
+	wget "${githubsource}gitignore" -O "$HOME"/.gitignore
+fi
 if test -z "$BW_SESSION"; then
 	BW_SESSION=$(bw login --raw)
 	export BW_SESSION
