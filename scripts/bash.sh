@@ -1,7 +1,6 @@
 #!/bin/sh
 set -o errexit
 set -o nounset
-githubsource="https://raw.githubusercontent.com/Ant0wan/conf/main/"
 
 append_rc() {
 		printf '
@@ -28,7 +27,14 @@ else
 		cp /etc/skel/.bashrc ~
 		append_rc
 	else
-		wget "${githubsource}bashrc" -O "$HOME"/.bashrc
+		if [ "$(basename $(pwd))" = "scripts" ]; then
+			cp "$(dirname $(pwd))"/bashrc "$HOME"/.bashrc
+		elif test -e "$0"; then
+			cp bashrc "$HOME"/.bashrc
+		else
+			githubsource="https://raw.githubusercontent.com/Ant0wan/conf/main/"
+			wget "${githubsource}bashrc" -O "$HOME"/.bashrc
+		fi
 	fi
 fi
 mkdir -p "$HOME"/.bashrc.d/
