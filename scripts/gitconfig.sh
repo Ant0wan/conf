@@ -13,7 +13,7 @@ if ! command -v bw >/dev/null 2>&1; then
 	script_dir=$(dirname "$0")
 	. "$script_dir/bitwarden.install.sh"
 fi
-githubsource="https://raw.githubusercontent.com/Ant0wan/conf/main/conf/"
+githubsource="https://raw.githubusercontent.com/Ant0wan/conf/main/"
 wget "${githubsource}gitconfig" -O "$HOME"/.gitconfig
 mkdir -p ~/.git-templates/hooks
 # Could copy all hooks from there

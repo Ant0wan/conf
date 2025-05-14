@@ -1,7 +1,7 @@
 #!/bin/sh
 set -o errexit
 set -o nounset
-githubsource="https://raw.githubusercontent.com/Ant0wan/conf/main/conf/"
+githubsource="https://raw.githubusercontent.com/Ant0wan/conf/main/"
 
 append_rc() {
 		printf '
