@@ -72,7 +72,7 @@
 					"properties": {
 						"cache_duration": "none"
 					},
-					"template": "󰅂 ",
+					"template": "❱ ",
 					"foreground": "#00FF9D",
 					"type": "text",
 					"style": "plain"
