@@ -1,5 +1,4 @@
 #!/bin/sh
-set -x
 set -o errexit
 VERSION=$(
 	select VERSION in $(curl --silent https://dist.torproject.org/torbrowser/ | grep -oP 'href="\K[0-9]+[^/]*' | sort -u); do
