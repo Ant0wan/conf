@@ -21,9 +21,9 @@
 						"cache_duration": "none",
 						"fetch_stash_count": true,
 						"fetch_status": true,
-						"fetch_upstream_icon": true
+						"fetch_upstream_icon": false
 					},
-					"template": " {{ .UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }}{{ end }}{{ if .Working.Changed }} {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} {{ end }}{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} {{ .StashCount }}{{ end }} ",
+					"template": " {{ .HEAD }}{{if .BranchStatus }}{{ end }}{{ if .Working.Changed }} {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} {{ end }}{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} {{ .StashCount }}{{ end }} ",
 					"foreground": "#00D8FF",
 					"type": "git",
 					"style": "diamond",
@@ -54,7 +54,7 @@
 					"type": "kubectl",
 					"style": "plain",
 					"foreground": "#326ce5",
-					"template": "{{if .Namespace}}{{.Namespace}}{{end}} 󱃾 {{.Context}}"
+					"template": "{{if .Namespace}}{{.Namespace}}{{end}}:{{.Context}}"
 				},
 				{
 					"type": "session",
