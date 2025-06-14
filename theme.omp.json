@@ -10,7 +10,7 @@
 						"cache_duration": "none",
 						"style": "full"
 					},
-					"template": "{{ .Path }}",
+					"template": "{{ .Path }} ",
 					"foreground": "#00FF9D",
 					"type": "path",
 					"style": "diamond"
@@ -24,7 +24,7 @@
 						"fetch_status": true,
 						"fetch_upstream_icon": false
 					},
-					"template": " {{ .HEAD }}{{if .BranchStatus }}{{ end }}{{ if .Working.Changed }} {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} {{ end }}{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} {{ .StashCount }}{{ end }} ",
+					"template": "{{ .HEAD }}{{if .BranchStatus }}{{ end }}{{ if .Working.Changed }} {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} {{ end }}{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} {{ .StashCount }}{{ end }} ",
 					"foreground": "#00D8FF",
 					"type": "git",
 					"style": "plain",
@@ -39,7 +39,7 @@
 					"properties": {
 						"cache_duration": "none"
 					},
-					"template": " {{ .Code }} {{ .Meaning }} ",
+					"template": "{{ .Code }} {{ .Meaning }}",
 					"foreground": "#0A0E24",
 					"background": "#FF2E63",
 					"type": "exit",
