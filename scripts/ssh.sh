@@ -16,7 +16,7 @@ fi
 if ! command -v bw >/dev/null 2>&1; then
 	echo "BitWarden CLI is required."
 	script_dir=$(dirname "$0")
-	. "$script_dir/bitwarden.install.sh"
+	. "$script_dir/bitwarden.sh"
 fi
 if test -z "$BW_SESSION"; then
     BW_SESSION=$(bw login --raw)

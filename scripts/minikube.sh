@@ -1,7 +1,7 @@
 #!/bin/sh
 set -o errexit
 SCRIPTNAME="$(basename "$0")"
-BIN="${SCRIPTNAME%.install.sh}"
+BIN="${SCRIPTNAME%.sh}"
 TMP="/tmp/${BIN}"
 OS="$(uname -s | awk '{print tolower($0)}')"
 ARCH="$(uname -m | sed 's/x86_64/amd64/')"

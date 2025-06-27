@@ -6,12 +6,12 @@ fi
 if ! command -v git >/dev/null 2>&1; then
 	echo "Git is required."
 	script_dir=$(dirname "$0")
-	. "$script_dir/git.install.sh"
+	. "$script_dir/git.sh"
 fi
 if ! command -v bw >/dev/null 2>&1; then
 	echo "BitWarden CLI is required."
 	script_dir=$(dirname "$0")
-	. "$script_dir/bitwarden.install.sh"
+	. "$script_dir/bitwarden.sh"
 fi
 githubsource="https://raw.githubusercontent.com/Ant0wan/conf/main/"
 if [ "$(basename $(pwd))" = "scripts" ]; then

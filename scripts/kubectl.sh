@@ -2,7 +2,7 @@
 set -o errexit
 VERSION=$(curl -L -s https://dl.k8s.io/release/stable.txt)
 SCRIPTNAME="$(basename "$0")"
-BIN="${SCRIPTNAME%.install.sh}"
+BIN="${SCRIPTNAME%.sh}"
 TMP="/tmp/${BIN}_${VERSION}"
 OS="$(uname -s | awk '{print tolower($0)}')"
 ARCH="$(uname -m | sed 's/x86_64/amd64/')"
