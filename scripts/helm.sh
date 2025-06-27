@@ -1,11 +1,9 @@
 #!/bin/sh
 #curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 set -o errexit
-set -o xtrace
 SCRIPTNAME="$(basename "$0")"
 BIN="${SCRIPTNAME%.sh}"
 VERSION=$(curl -s "https://api.github.com/repos/${BIN}/${BIN}/releases/latest" | jq -r '.tag_name')
-exit 1
 OS="$(uname -s | awk '{print tolower($0)}')"
 ARCH="$(uname -m | sed 's/x86_64/amd64/')"
 TMP="/tmp/${BIN}_${VERSION}"
