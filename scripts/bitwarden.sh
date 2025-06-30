@@ -9,5 +9,5 @@ unzip bw-cli.zip
 rm bw-cli.zip
 chmod +x bw
 sudo mv bw /usr/local/bin/
-bw login --apikey
+bw login
 bw logout
