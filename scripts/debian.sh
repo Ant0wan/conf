@@ -19,3 +19,4 @@ else
 	githubsource="https://raw.githubusercontent.com/Ant0wan/conf/main/"
 	wget "${githubsource}user-dirs.dirs" -O "$HOME"/.config/user-dirs.dirs
 fi
+rm -rf Desktop Documents Downloads Music Pictures Public Templates Videos
