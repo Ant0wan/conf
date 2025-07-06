@@ -2,6 +2,7 @@
 if [ -f /etc/fedora-release ]; then
   sudo dnf install -y skim
 elif [ -f /etc/lsb-release ] || [ -f /etc/os-release ] ; then
+	sudo apt install curl -yq
 	mkdir -p /tmp/skim/
 	cd /tmp/skim
 	wget -qO-  https://raw.githubusercontent.com/lotabout/skim/master/install | bash
