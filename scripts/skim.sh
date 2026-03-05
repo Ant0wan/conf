@@ -1,5 +1,6 @@
 #!/bin/sh
 if [ -f /etc/fedora-release ]; then
+  sudo dnf copr -y enable sisyphus1813/skim
   sudo dnf install -y skim
 elif [ -f /etc/lsb-release ] || [ -f /etc/os-release ] ; then
 	sudo apt install curl -yq
