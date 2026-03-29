@@ -1,15 +1,12 @@
 #!/bin/sh
-if [ -f /etc/fedora-release ]; then
-  sudo dnf copr -y enable sisyphus1813/skim
-  sudo dnf install -y skim
-elif [ -f /etc/lsb-release ] || [ -f /etc/os-release ] ; then
-	sudo apt install curl -yq
-	mkdir -p /tmp/skim/
-	cd /tmp/skim
-	wget -qO-  https://raw.githubusercontent.com/lotabout/skim/master/install | bash
-	sudo install bin/sk /usr/local/bin
-else
-  echo "Unsupported distribution. This script only supports Fedora and Ubuntu."
-  exit 1
-fi
-echo "Skim has been successfully installed."
+set -o errexit
+REPO="skim-rs/skim"
+VERSION=$(curl -s "https://api.github.com/repos/${REPO}/releases/latest" | jq -r '.tag_name')
+ARCH="$(uname -m | sed 's/x86_64/x86_64/; s/aarch64/aarch64/')"
+OS="$(uname -s | tr '[:upper:]' '[:lower:]' | sed 's/darwin/apple-darwin/; s/linux/unknown-linux-musl/')"
+TARGET="skim-${ARCH}-${OS}.tar.xz"
+TMP="/tmp/skim"
+mkdir -p "$TMP"
+curl -sL "https://github.com/${REPO}/releases/download/${VERSION}/${TARGET}" -o "${TMP}/${TARGET}"
+sudo tar -xf "${TMP}/${TARGET}" -C "$TMP" --strip-components=1 "skim-${ARCH}-${OS}/sk"
+sudo install "$TMP/sk" /usr/local/bin/
